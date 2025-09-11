@@ -1,9 +1,8 @@
 import subprocess
 
-# File principale REINFORCE (sostituisci con il nome corretto del tuo file)
 SCRIPT = "train.py"
 
-# Seeds richiesti
+# Seeds
 seeds = [15, 8, 17]
 
 # Parametri comuni
@@ -13,7 +12,7 @@ video_every = 50000
 print_every = 5000
 model_every = 30000
 
-# Due baseline da testare
+# Baseline to test 
 baselines = [0.0, 20.0]
 
 # Loop sugli esperimenti
