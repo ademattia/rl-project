@@ -55,8 +55,8 @@ def main():
     # Create target environment
     env_name = "CustomHopper-source-v0"
     eval_env = gym.make(env_name)
-    eval_env.set_scale(np.array([1.11442929, 1.08946531, 0.98016055]))
-    eval_env.set_masses()
+    # eval_env.set_scale(np.array([1.11442929, 1.08946531, 0.98016055]))
+    # eval_env.set_masses()
     eval_base = Monitor(eval_env)
     eval_venv = DummyVecEnv([lambda: eval_base])
 
@@ -69,14 +69,12 @@ def main():
     vecnorm_filename = "SAC_CustomHopper-source-v0_vecnorm_seed15_NoUDR_step200000.pkl"
     vecnorm_path = os.path.join("..", "SAC", "models", vecnorm_filename)
     vecnorm = VecNormalize.load(vecnorm_path, eval_venv)
-    print("Cerco il file qui:", os.path.abspath(vecnorm_path))
     vecnorm.training = False
     vecnorm.norm_reward = False
     
     
     # Load model 
     model_path = os.path.join("..", "SAC", "models", "SAC_CustomHopper-source-v0_seed15_NoUDR_step200000.zip")
-    print("Cerco il file qui:", os.path.abspath(model_path))
     model = SAC.load(model_path, env=vecnorm, device="cpu")
 
     # Evaluate the policy
