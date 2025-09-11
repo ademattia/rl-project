@@ -26,8 +26,6 @@ def objective(trial):
         model_every=10000
     )
 
-    # pass the Optuna trial for pruning and enable hyperparameter_search so main returns a metric
-    # randomize the search over 3 different seeds and return the average result
 
     try:
         obj = main(args, trial=trial, hyperparameter_search=True)
@@ -44,7 +42,6 @@ def objective(trial):
         return obj
 
 if __name__ == "__main__":
-    print("Ciao")
     study = optuna.create_study(direction="maximize")
     study.optimize(objective, n_trials=50)
     
