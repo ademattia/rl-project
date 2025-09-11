@@ -1,6 +1,5 @@
 import subprocess
 
-# File di training (sostituire con il nome corretto del tuo script di training)
 SCRIPT = "train.py"
 
 # Parametri fissi
@@ -9,12 +8,11 @@ VIDEO_EVERY = 50000
 MODEL_EVERY = 5000
 PRINT_EVERY = 5000
 
-# Parametri da esplorare
+
 BATCH_SIZES = [1, 10, 50]
 SEEDS = [15, 8, 17]
 MODES = ["baseline", "TD"]
 
-# Loop su tutte le combinazioni
 for batch_size in BATCH_SIZES:
     for mode in MODES:
         for seed in SEEDS:
