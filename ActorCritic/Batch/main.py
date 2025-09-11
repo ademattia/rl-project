@@ -2,7 +2,6 @@ import subprocess
 
 SCRIPT = "train.py"
 
-# Parametri fissi
 N_EPISODES = 15000
 VIDEO_EVERY = 50000
 MODEL_EVERY = 5000
