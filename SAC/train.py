@@ -44,8 +44,6 @@ def main():
 
     # create train environment
     base = gym.make(env_name, udr=udr)
-    base.set_scale(np.array([1.11442929, 1.08946531, 0.98016055]))
-    base.set_masses()
     base.seed(seed)
     base = Monitor(base)
     train_venv = DummyVecEnv([lambda: base])
