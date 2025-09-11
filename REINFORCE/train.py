@@ -148,17 +148,17 @@ def main(args=None, trial=None, hyperparameter_search=False):
         # Test video path
         print(f"Video folder: {video_generator.video_folder}")
         os.makedirs(video_generator.video_folder, exist_ok=True)
-        print(f"✓ Video directory verified: {video_generator.video_folder}")
+        print(f" Video directory verified: {video_generator.video_folder}")
 
         # Test model save paths by showing where they would be saved
         print(f"Model save interval: every {args.model_every} episodes")
-        print(f"✓ Model saving configured")
+        print(f" Model saving configured")
 
         # Test CSV logging paths
         print(
             f"CSV logging configured - Batch size: {args.batch_size}, Baseline: {args.baseline}, Seed: {args.seed}"
         )
-        print(f"✓ CSV logging configured")
+        print(f" CSV logging configured")
 
         # Test environment and agent initialization
         print(f"Environment: {env.spec.id}")
@@ -166,10 +166,10 @@ def main(args=None, trial=None, hyperparameter_search=False):
             f"Observation space: {observation_space_dim}, Action space: {action_space_dim}"
         )
         print(f"Device: {args.device}")
-        print(f"✓ Environment and agent initialized successfully")
+        print(f" Environment and agent initialized successfully")
 
-        print("\n✓ All configurations verified successfully!")
-        print("✓ Dry run completed - ready for training")
+        print("\n All configurations verified successfully!")
+        print(" Dry run completed - ready for training")
         return None
 
     for episode in range(args.n_episodes):
@@ -221,7 +221,6 @@ def main(args=None, trial=None, hyperparameter_search=False):
         if (episode + 1) % args.batch_size == 0:
             agent.update_policy(args.baseline)
 
-            # GPU: pulizia cache periodica per evitare accumulo memoria
             if args.device == "cuda" and (episode + 1) % (args.batch_size * 10) == 0:
                 torch.cuda.empty_cache()
 
