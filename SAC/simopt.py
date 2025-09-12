@@ -229,22 +229,17 @@ def simopt_reps_then_train(
 
     model_final.learn(total_timesteps=final_timesteps, callback=logger)
 
-    eval_env = gym.make(env_target_id)
-    eval_env.seed(seed)
-
-    
-    mean_ret, std_ret = evaluate_policy(model_final, eval_env, n_eval_episodes=10, deterministic=True)
-    print(f"Evaluation on target env -> mean_return: {mean_ret:.2f} std: {std_ret:.2f}")
-
-    # save model
+    # save model and vecnorm
     out_model_path = os.path.join(save_dir, f"sac_final_reps_seed{seed}.zip")
     model_final.save(out_model_path)
+    vecnorm_path = os.path.join(save_dir, f"vecnorm_final_reps_seed{seed}.pkl")
+    vecnorm.save(vecnorm_path)
     print("Saved final model to", out_model_path)
+    print("Saved VecNormalize to", vecnorm_path)
 
     # close envs
     env_train.close()
     env_target.close()
-    eval_env.close()
 
     return final_theta, model_final
 
