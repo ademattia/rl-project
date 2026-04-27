@@ -155,7 +155,6 @@ def get_series(
                     hi_values.append(window_hi)
                     
             elif value_col == "Reward":
-                # Comportamento normale
                 window_data = full_runs[:, start_idx : idx + 1]
 
                 window_mean = window_data.mean(axis=(0, 1))

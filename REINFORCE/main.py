@@ -2,10 +2,10 @@ import subprocess
 
 SCRIPT = "train.py"
 
-# Seeds
+
 seeds = [15, 8, 17]
 
-# Parametri comuni
+# Shared training parameters
 n_episodes = 15000
 batch_size = 50
 video_every = 50000
@@ -15,7 +15,7 @@ model_every = 30000
 # Baseline to test 
 baselines = [0.0, 20.0]
 
-# Loop sugli esperimenti
+
 for baseline in baselines:
     for seed in seeds:
         print(f"\n=== Running baseline={baseline}, seed={seed} ===\n")

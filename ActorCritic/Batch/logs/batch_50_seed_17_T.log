@@ -1,4 +1,0 @@
-Using device: cpu
-CPU threads: 1
-Traceback (most recent call last):
-  File "train.py", line 259, in <module>

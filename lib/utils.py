@@ -145,9 +145,6 @@ class TrainingLogger:
             writer = csv.writer(f)
             writer.writerow(["Episode", "Reward", "Episode Steps"])
 
-    # ----------------------------
-    # Logging
-    # ----------------------------
     def record_episode(self, episode, train_return, episode_steps):
         self.episode_returns.append(train_return)
         self.episode_lengths.append(episode_steps)
@@ -158,9 +155,6 @@ class TrainingLogger:
             writer = csv.writer(f)
             writer.writerow([(episode + 1), train_return, episode_steps])
 
-    # ----------------------------
-    # Printing
-    # ----------------------------
     def print_training_initialization(self):
         print("\n" + "═" * 80)
         print(" Training Initialization")
@@ -215,9 +209,6 @@ class TrainingLogger:
         print(f" Total Time     : {total_time/60:.1f} minutes")
         print("═" * 80 + "\n")
 
-    # ----------------------------
-    # Model saving
-    # ----------------------------
     def save_model(self, agent, episode=None):
 
         tmp = f"{self.safe_alg}_batch{self.batch_size}"
